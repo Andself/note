@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>旋转动画</title>
+	<style>
+		div,ul,li,img{padding: 0;margin: 0;}
+		ul,li{list-style: none;}
+		.box{width: 50px;height: 50px;position: relative; margin: 400px auto 100px; background: #f8f8f8; padding: }
+		.box ul{ display: block;width: 50px; height: 50px; position: absolute; z-index: -1; left: 0; top: 0;animation: boxanimate 5s linear infinite;transform-origin:25px 25px; }
+		.box li span{ display: block; width: 50px;height: 50px; }
+		.box li{ display: block; position: absolute; width: 50px; height: 50px; left: 0; top: 0; transform-origin:25px 25px; transition: all 0.4s linear;}
+		.box:hover ul li{ left: 100px; transform-origin:-75px 25px;}
+		.box img{ position: relative; }
+		.box li img{animation: boxanimate2 5s linear infinite;}
+		.box:hover + p:after{content: '奥义！影分身之术'}
+		@keyframes boxanimate{
+			0%{
+				transform: rotateZ(0);
+			}
+			100%{
+				transform: rotateZ(-360deg);
+			}
+		}
+		@keyframes boxanimate2{
+			0%{
+				transform: rotateZ(0);
+			}
+			100%{
+				transform: rotateZ(360deg);
+			}
+		}
+	</style>
+</head>
+<body>
+		<div class="box">
+			<img src="images/20160305191532.gif">
+			<ul>
+				<!-- 根据数量自动排列,数量随便... -->
+				<li><span><img src="images/20160305191532.gif"></span></li>
+				<li><span><img src="images/20160305191532.gif"></span></li>
+				<li><span><img src="images/20160305191532.gif"></span></li>
+				<li><span><img src="images/20160305191532.gif"></span></li>
+				<li><span><img src="images/20160305191532.gif"></span></li>
+				<li><span><img src="images/20160305191532.gif"></span></li>
+			</ul>
+		</div>
+		<p style="text-align: center;"></p>
+		<script>
+			var liChild  = document.querySelectorAll('li');
+			var spanList = document.querySelectorAll('li span');
+			var num      = liChild.length;
+			console.log(liChild);
+			console.log(num);
+			for(var i=0;i<num;i++){
+				liChild[i].style.transform="rotateZ("+(360/num*i)+"deg)";
+				spanList[i].style.transform="rotateZ("+(-360/num*i)+"deg)";
+			}
+		</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ch">
+<head>
+    <meta charset="utf-8">
+    <title>DSP nav</title>
+    <style>
+	body{ text-align:center; background:#f8f8f8; height:2000px; padding-top:200px;}
+	article{ perspective-origin:50% 100%;/*perspective: 600; -webkit-perspective: 600;*//*transform:perspective(600px);*/}
+    .fanzhuan{ width:200px; height:200px; background:none; position:relative; display:inline-block; margin:10px; cursor:pointer;
+    	perspective-origin:50% 50%;-webkit-perspective-origin:50% 50%; 
+    	transform-style: preserve-3d;-webkit-transform-style: preserve-3d;
+    	animation:fd 4s linear infinite;-webkit-animation:fd 4s linear infinite;
+    	animation-fill-mode:both;-webkit-animation-fill-mode:both;
+    }
+	.fanzhuan > span{ display:block; width:100%; height:100%; position: absolute; left:0; top:0; text-align:center; line-height:200px; color:#fff; 
+		font-size:40px;
+		transition:all 0.3s linear;-webkit-transition:all 0.3s linear;  
+		box-shadow:0 0 5px #999;-webkit-box-shadow:0 0 5px #999;
+		/*backface-visibility:hidden;*/ 
+		opacity: 0.7;}
+	.fanzhuan span.up{ background:#333; z-index:3; transform:rotateX(0deg) translate3d(0,0,100px); webkit-transform:rotateX(0deg) translate3d(0,0,100px);}
+	.fanzhuan span.down{ background:#C93; z-index:1; transform:rotateY(180deg) translate3d(0,0,100px);-webkit-transform:rotateY(180deg) translate3d(0,0,100px);}
+	.fanzhuan span.top{ background:#3CF; z-index:2; transform:rotateX(90deg) translate3d(0,0,100px);-webkit-transform:rotateX(90deg) translate3d(0,0,100px);}
+	.fanzhuan span.bot{ background:#036; z-index:2; transform:rotateX(270deg) translate3d(0,0,100px);-webkit-transform:rotateX(270deg) translate3d(0,0,100px);}
+	.fanzhuan span.left{ background:#090; z-index:2; transform:rotateY(270deg) translate3d(0,0,100px);-webkit-transform:rotateY(270deg) translate3d(0,0,100px);}
+	.fanzhuan span.right{ background:#F60; z-index:2; transform:rotateY(90deg) translate3d(0,0,100px);-webkit-transform:rotateY(90deg) translate3d(0,0,100px);}
+
+	.fanzhuan:hover span.up{ transform:rotateX(0deg) translate3d(0,0,200px);-webkit-transform:rotateX(0deg) translate3d(0,0,200px); }
+	.fanzhuan:hover span.down{ transform:rotateY(180deg) translate3d(0,0,200px);-webkit-transform:rotateY(180deg) translate3d(0,0,200px); }
+	.fanzhuan:hover span.top{ transform:rotateX(90deg) translate3d(0,0,200px);-webkit-transform:rotateX(90deg) translate3d(0,0,200px); }
+	.fanzhuan:hover span.bot{ transform:rotateX(270deg) translate3d(0,0,200px);-webkit-transform:rotateX(270deg) translate3d(0,0,200px); }
+	.fanzhuan:hover span.left{ transform:rotateY(270deg) translate3d(0,0,200px);-webkit-transform:rotateY(270deg) translate3d(0,0,200px); }
+	.fanzhuan:hover span.right{ transform:rotateY(90deg) translate3d(0,0,200px);-webkit-transform:rotateY(90deg) translate3d(0,0,200px); }
+	@keyframes fd {
+		0%{transform:perspective(800px) rotateY(0deg);-webkit-transform:perspective(800px) rotateY(0deg);}
+		100%{transform:perspective(800px) rotateY(360deg);-webkit-transform:perspective(800px) rotateY(360deg);}
+	}
+	/*等边三角形*/
+	.sanjiao{ width: 0; height: 0; 
+		border-left: 150px solid transparent;
+		border-top: 150px solid #f00;
+		/*border-right:50px solid #333;
+		border-bottom: 100px solid #090;*/
+		transform:scale3d(1.73,1,1) rotateZ(45deg);-webkit-transform:scale3d(1.73,1,1) rotateZ(45deg);
+	 }
+	 .sanjiaobox{width:150px;height:150px;
+	 	/*transform:rotateZ(45deg);*/
+	 	transform-origin:100% 50%;
+	 	animation:sjzh 4s linear infinite;-webkit-animation:sjzh 4s linear infinite;
+	 }
+	 @keyframes sjzh{
+	 	0%{transform:rotateZ(0deg);-webkit-transform:rotateZ(0deg);}
+	 	100%{transform:rotateZ(360deg);-webkit-transform:rotateZ(360deg);}
+	 }
+    </style>
+</head>
+
+<body>
+<article>
+	<div class="fanzhuan">
+    	<span class="up">A</span>
+        <span class="top">B</span>
+        <span class="down">C</span>
+        <span class="bot">D</span>
+        <span class="left">E</span>
+        <span class="right">F</span>
+    </div>
+    <div class="sanjiaobox">
+    	<div class="sanjiao"></div>
+    </div>
+    
+</article>
+</body>
+</html>
