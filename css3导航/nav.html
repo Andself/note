@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--code by cchen-->
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1 ,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>导航切换</title>
+<link type="text/css" rel="stylesheet" href="css/nav.css">
+<script src="js/jquery-2.1.4.min.js"></script>
+<script>
+$(document).ready(function(){
+    openNav = function(){
+			$('body').toggleClass('open-nav');
+			$('#menu-pull').removeClass('pull-right');
+			$('.menu-list li').removeClass('show');
+		}
+	//Secondary navigation
+	$('.menu-list').delegate('li','click',function(){
+			var num = $(this).attr("hxt");
+			var _pullBox = $('#menu-pull');
+			var _pullright = $('#menu-pull ul[hxt='+num+']');
+			
+			$(this).addClass('show').siblings().removeClass('show');
+			_pullBox.addClass('pull-right');
+			_pullright.addClass('showit');
+			_pullright.siblings('ul').removeClass('showit');
+			//
+			console.log("num:" + num);
+		})
+});
+</script>
+</head>
+<body class="theme-first">
+<!--header-->
+	<header>
+    	<a href="javascript:openNav();" id="nav">
+        	<span class="nav-btn">
+            	<span class="menu-icon nav-icon-01"></span>
+                <span class="menu-icon nav-icon-02"></span>
+                <span class="menu-icon nav-icon-03"></span>
+            </span>
+        </a>
+        <a href="javascript:void(0);" id="language">EN</a>
+    </header>
+    <nav>
+    	<ul class="menu-list">
+        <!--一级导航，hxt为菜单对应编号-->
+        	<li hxt="1"><a href="javascript:void(0);">导航</a></li>
+            <li hxt="2"><a href="javascript:void(0);">导航</a></li>
+            <li hxt="3"><a href="javascript:void(0);">导航</a></li>
+            <li hxt="4"><a href="javascript:void(0);">导航</a></li>
+        </ul>
+        <div id="menu-pull">
+        <!--ul为二级导航-->
+        	<ul class="pull-child" hxt="1">
+            	<li><a href="javascript:void(0);">0</a></li>
+                <li><a href="javascript:void(0);">0</a></li>
+                <li><a href="javascript:void(0);">0</a></li>
+                <li><a href="javascript:void(0);">0</a></li>
+            </ul>
+            <ul class="pull-child" hxt="2">
+            	<li><a href="javascript:void(0);">1</a></li>
+            </ul>
+            <ul class="pull-child" hxt="3">
+            	<li><a href="javascript:void(0);">2</a></li>
+            </ul>
+            <ul class="pull-child" hxt="4">
+            	<li><a href="javascript:void(0);">3</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div id="mask" onClick="openNav()"></div>
+<!--headerover-->
+<!--article body-->    
+    <article>
+    	<p>华夏芯（北京）通用处理器技术有限公司是我国第一家从事下一代异构计算处理器芯片设计的集成电路企业，目前是全球主要的异构计算组织——“异构系统架构基金会（Heterogeneous System Architecture Foundation，HSA）”的董事及主席，这是中国芯片企业第一次在高端处理器领域的国际组织中担任最高领导职务。
+华夏芯的产品包括具有完全自主知识产权、可对外授权许可的处理器IP核（CPU、GPU、DSP），以及基于公司IP核的高性能处理器芯片。华夏芯将成为世界上率先推出支持HSA异构计算架构的处理器产品的公司之一。
+华夏芯的核心团队包括2名国家“千人计划”及1名“外专千人计划”专家，拥有多项世界领先的核心技术及国内外专利体系，在北京、上海、美国等地设有研发中心。</p>
+<p>华夏芯（北京）通用处理器技术有限公司是我国第一家从事下一代异构计算处理器芯片设计的集成电路企业，目前是全球主要的异构计算组织——“异构系统架构基金会（Heterogeneous System Architecture Foundation，HSA）”的董事及主席，这是中国芯片企业第一次在高端处理器领域的国际组织中担任最高领导职务。
+华夏芯的产品包括具有完全自主知识产权、可对外授权许可的处理器IP核（CPU、GPU、DSP），以及基于公司IP核的高性能处理器芯片。华夏芯将成为世界上率先推出支持HSA异构计算架构的处理器产品的公司之一。
+华夏芯的核心团队包括2名国家“千人计划”及1名“外专千人计划”专家，拥有多项世界领先的核心技术及国内外专利体系，在北京、上海、美国等地设有研发中心。</p>
+<p>华夏芯（北京）通用处理器技术有限公司是我国第一家从事下一代异构计算处理器芯片设计的集成电路企业，目前是全球主要的异构计算组织——“异构系统架构基金会（Heterogeneous System Architecture Foundation，HSA）”的董事及主席，这是中国芯片企业第一次在高端处理器领域的国际组织中担任最高领导职务。
+华夏芯的产品包括具有完全自主知识产权、可对外授权许可的处理器IP核（CPU、GPU、DSP），以及基于公司IP核的高性能处理器芯片。华夏芯将成为世界上率先推出支持HSA异构计算架构的处理器产品的公司之一。
+华夏芯的核心团队包括2名国家“千人计划”及1名“外专千人计划”专家，拥有多项世界领先的核心技术及国内外专利体系，在北京、上海、美国等地设有研发中心。</p>
+<p>华夏芯（北京）通用处理器技术有限公司是我国第一家从事下一代异构计算处理器芯片设计的集成电路企业，目前是全球主要的异构计算组织——“异构系统架构基金会（Heterogeneous System Architecture Foundation，HSA）”的董事及主席，这是中国芯片企业第一次在高端处理器领域的国际组织中担任最高领导职务。
+华夏芯的产品包括具有完全自主知识产权、可对外授权许可的处理器IP核（CPU、GPU、DSP），以及基于公司IP核的高性能处理器芯片。华夏芯将成为世界上率先推出支持HSA异构计算架构的处理器产品的公司之一。
+华夏芯的核心团队包括2名国家“千人计划”及1名“外专千人计划”专家，拥有多项世界领先的核心技术及国内外专利体系，在北京、上海、美国等地设有研发中心。</p>
+<p>华夏芯（北京）通用处理器技术有限公司是我国第一家从事下一代异构计算处理器芯片设计的集成电路企业，目前是全球主要的异构计算组织——“异构系统架构基金会（Heterogeneous System Architecture Foundation，HSA）”的董事及主席，这是中国芯片企业第一次在高端处理器领域的国际组织中担任最高领导职务。
+华夏芯的产品包括具有完全自主知识产权、可对外授权许可的处理器IP核（CPU、GPU、DSP），以及基于公司IP核的高性能处理器芯片。华夏芯将成为世界上率先推出支持HSA异构计算架构的处理器产品的公司之一。
+华夏芯的核心团队包括2名国家“千人计划”及1名“外专千人计划”专家，拥有多项世界领先的核心技术及国内外专利体系，在北京、上海、美国等地设有研发中心。</p>
+<p>华夏芯（北京）通用处理器技术有限公司是我国第一家从事下一代异构计算处理器芯片设计的集成电路企业，目前是全球主要的异构计算组织——“异构系统架构基金会（Heterogeneous System Architecture Foundation，HSA）”的董事及主席，这是中国芯片企业第一次在高端处理器领域的国际组织中担任最高领导职务。
+华夏芯的产品包括具有完全自主知识产权、可对外授权许可的处理器IP核（CPU、GPU、DSP），以及基于公司IP核的高性能处理器芯片。华夏芯将成为世界上率先推出支持HSA异构计算架构的处理器产品的公司之一。
+华夏芯的核心团队包括2名国家“千人计划”及1名“外专千人计划”专家，拥有多项世界领先的核心技术及国内外专利体系，在北京、上海、美国等地设有研发中心。</p>
+    </article>
+<!--article over-->
+</body>
+</html>
