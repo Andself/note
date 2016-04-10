@@ -4,9 +4,14 @@
     <meta charset="utf-8">
     <title>css3 立方体</title>
     <style>
-	body{ text-align:center; background:#f8f8f8; height:2000px; padding-top:200px;}
+    /*无关样式*/
+	body{ text-align:center; background:#f8f8f8; padding-top:50px; font-family: '微软雅黑'}
 	article{ perspective-origin:50% 100%;/*perspective: 600; -webkit-perspective: 600;*//*transform:perspective(600px);*/}
-    .fanzhuan{ width:200px; height:200px; background:none; position:relative; display:inline-block; margin:10px; cursor:pointer;
+	.info{ width: 960px; margin: 0 auto; text-align: left; }
+	.info b{color: #f00;}
+	.stop:checked + .fanzhuan,.stop:checked + .trianglebox,.stop:checked + .trianglebox2{ animation-play-state: paused; } 
+	/*正方体*/
+    .fanzhuan{ width:200px; height:200px; background:none; position:relative; display:block; margin:100px auto; cursor:pointer;
     	perspective-origin:50% 50%;-webkit-perspective-origin:50% 50%; 
     	transform-style: preserve-3d;-webkit-transform-style: preserve-3d;
     	animation:fd 4s linear infinite;-webkit-animation:fd 4s linear infinite;
@@ -36,16 +41,24 @@
 		100%{transform:perspective(800px) rotateY(360deg);-webkit-transform:perspective(800px) rotateY(360deg);}
 	}
 	/*等边三角形*/
-	.sanjiao{ width: 0; height: 0; 
+	.triangle{ width: 0; height: 0; 
 		border-left: 150px solid transparent;
-		border-top: 150px solid #f00;
-		/*border-right:50px solid #333;
-		border-bottom: 100px solid #090;*/
-		transform:scale3d(1.73,1,1) rotateZ(45deg);-webkit-transform:scale3d(1.73,1,1) rotateZ(45deg);
+		border-bottom: 259.8px solid #f00;
+		border-right: 150px solid transparent;
 	 }
-	 .sanjiaobox{width:150px;height:150px;
-	 	/*transform:rotateZ(45deg);*/
-	 	transform-origin:100% 50%;
+	 .trianglebox{width:300px;height:260px; display:block; margin: 150px auto;
+	 	transform-origin:150px 173px;
+	 	animation:sjzh 4s linear infinite;-webkit-animation:sjzh 4s linear infinite;
+	 }
+
+	 /*小三角*/
+	 .triangle2{ width: 0; height: 0; 
+		border-right: 150px solid transparent;/*transparent*/
+		border-top: 150px solid #f00;
+		transform:scale3d(1.73,1,1) rotateZ(-45deg);-webkit-transform:scale3d(1.73,1,1) rotateZ(-45deg);
+	 }
+	 .trianglebox2{width:150px;height:150px; display:block; margin: 150px auto;
+	 	transform-origin:13px 75px;transform:rotateZ(360deg);
 	 	animation:sjzh 4s linear infinite;-webkit-animation:sjzh 4s linear infinite;
 	 }
 	 @keyframes sjzh{
@@ -57,6 +70,8 @@
 
 <body>
 <article>
+	<!-- 正方体 -->
+	<label for="cube">点击暂停动画</label><input type="checkbox" class="stop" id="cube">
 	<div class="fanzhuan">
     	<span class="up">A</span>
         <span class="top">B</span>
@@ -65,8 +80,40 @@
         <span class="left">E</span>
         <span class="right">F</span>
     </div>
-    <div class="sanjiaobox">
-    	<div class="sanjiao"></div>
+    <div class="info">
+	    <h2>关于正方体的一些笔记</h2>
+	    <p>1. .fanzhuan父级元素设置transform-style: preserve-3d;属性，否则只能是2d扁平</p>
+	    <p>2. perspective属性直接就是字面意思，透视，即近大远小的视觉效果，我不善于表达，具体解释可以去看下张鑫旭大神的博客
+	    <br>我要提的一点是，perspective属性可以定义在父级元素中，也可以定义在子元素的transform:perspective()中，区别就是透视的正中心是相对于父级整体，还是子元素单独计算</p>
+	    <p>3. 子元素span分别对应6个面，通过transform:rotateX(0deg) translate3d(0,0,100px)来摆放</p>
+	    <p>注：transform中的变换属性的顺序是累加的,读取顺序是'<b>自右往左</b>',但是transform中不同的变换属性<b>优先级</b>是不一样的</p>
+	    <p>本例子正使用的rotateX()和translate()属性中，rotateX()的优先级<b>大于</b>translate();
+	    <br>所以无论顺序如何，都是先rotateX()再translate()</p>
+	    <p>translate3d() 在rotateX()之后才开始判断，translate3d()默认的是xyz坐标轴，如果rotateX(90deg)之后，那么此时translate3d()所对应Y轴其实是原本的Z轴
+	    <br>描述有点牵强，大概可以理解为rotate是乘法，translate是加法，1*2+3 !== 1+2*3</p>
+	    <p>  =。=</p>
+    </div>
+    <!-- 三角形 -->
+    <label for="triangle">点击暂停动画1</label><input type="checkbox" class="stop" id="triangle">
+    <div class="trianglebox">
+    	<div class="triangle"></div>
+    </div>
+
+    <label for="triangle2">点击暂停动画2</label><input type="checkbox" class="stop" id="triangle2">
+    <div class="trianglebox2">
+    	<div class="triangle2"></div>
+    </div>
+    
+    <div class="info">
+    	<h2>关于等边三角形的一些笔记</h2>
+    	<p>第一个三角(大)直接通过三边的border画出来，这个没有探究意义，略过【注：border画三角兼容ie6+】</p>
+    	<p>我们主要说的是第二个小三角的实现，这里主要通过两个步骤：
+    		<br>1.通过两边的border画出一个直角等腰三角形；
+    		<br>2.通过transform中的scale()和rotate()两个方式，讲等腰直角三角形<b>拉伸</b>为一个等边三角形;
+    	</p>
+    	<p>前面我们说过，transform中的变换属性实现起来是<b>有顺序的</b>，这里使用的scale()和rotate()两个方式的<b>优先级相等</b>的；所以此时transform中的实现次序由书写次序所决定，即<b>自右往左</b>；我所使用的方式是先旋转40deg，然后在沿着x轴拉伸；
+    	<br>所以写作<b>transform:scale3d(1.73,1,1) rotateZ(-45deg);</b>
+    	<br>注：使用scale3d时为了提高渲染效率</p>
     </div>
     
 </article>
