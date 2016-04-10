@@ -4,7 +4,7 @@
 自娱自乐，暂不考虑兼容性<br>
 建议Google Chrome查看
 <br>
-目前有一下内容：
+<p>目前有以下内容：</p>
 <ol>
   <li>css拼接3d立方体[animate/cube2.1.html]</li>
   <li>css画三角[animate/cube2.1.html]</li>
