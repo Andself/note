@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Pragma" content="no-cache, no-store, must-revalidate, max-age=0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <title>Andself</title>
+  <style>
+  .vuelogo{
+    /* #4fc08d */
+    position: absolute;
+    left: 200px;
+    top: 200px;
+    width: 50px;
+    height: 50px;
+    background: #4fc08d;
+    border-width: 20px;
+    border-color: #4fc08d;
+    border-style: solid;
+    transition: all .4s linear;
+  }
+  #c1:checked ~ .vuelogo{
+    background: none;
+    transform: scaleX( .6) rotateZ(45deg) translateY(-100px);
+    border-color: transparent #4fc08d #4fc08d transparent;
+  }
+  #c2:checked ~ .vuelogo{
+    color: #4fc08d;
+    border-color: transparent #f00 #f00 transparent;
+  }
+  #c3:checked ~ .vuelogo{
+    box-shadow: 50px 50px 0 0px #ccc, 0 100px 0 0px, 100px 0 0 0px, 100px 100px 0 0px #666;
+  }
+  </style>
+</head>
+<body>
+  <input type="checkbox" id="c3" /><label><分身</label>
+  <input type="checkbox" id="c2" /><label><变色</label>
+  <input type="checkbox" id="c1" /><label><变形</label>
+  <div class="vuelogo"></div>
+</body>
+</html>

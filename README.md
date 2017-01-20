@@ -7,7 +7,7 @@
 <p>目前有以下内容：</p>
 <ol>
   <li>css拼接3d立方体[animate/cube2.1.html]</li>
-  <li>css画三角[animate/cube2.1.html]</li>
+  <li>个人logo[mylogo/zero.html]</li>
   <li>通过纯css3实现的一个动态导航[css3导航/nav.html&&index.html]</li>
   <li>小球动画可忽略，只涉及到一个动画结束的js监听[css3导航/qiu.html]</li>
 </ol>
